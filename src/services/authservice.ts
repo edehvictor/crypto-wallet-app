@@ -97,7 +97,7 @@ class FirebaseAuthService {
     } catch (error) {
       const e = error as Error;
       console.error("Error handling sign-up:", e.message);
-      showToast.error("Sign-up failed. Please try again.");
+      showToast.error(e.message || "Sign-up failed. Please try again.");
       return null;
     }
   }
