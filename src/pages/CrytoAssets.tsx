@@ -5,8 +5,7 @@ import SearchCryptoModal from "@/components/ui/SearchModal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { nftCollections } from "@/constants/Dummy";
 import { useCoinStore } from "@/hooks/useCoinStore";
-import { fetchSelectedCoins } from "@/lib/coingecko";
-import type { CoinMarket } from "@/types/types";
+// import type { CoinMarket } from "@/types/types";
 import { ChevronRight, TrendingDown, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,24 +13,16 @@ import { useNavigate } from "react-router-dom";
 const CryptoAssets = () => {
   const [activeTab, setActiveTab] = useState<"crypto" | "nfts">("crypto");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [coins, setCoins] = useState<CoinMarket[]>([]);
-  const { selectedCoins } = useCoinStore();
+  // const [coins, setCoins] = useState<CoinMarket[]>([]);
+  // const { selectedCoins } = useCoinStore();
+  const { coinData, fetchCoins } = useCoinStore();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (selectedCoins.length === 0) {
-      setCoins([]);
-      return;
-    }
-
-    const fetchSelected = async () => {
-      const data = await fetchSelectedCoins(selectedCoins);
-      setCoins(data);
-    };
-
-    fetchSelected();
-  }, [selectedCoins]);
+    fetchCoins();
+    // fetchSelected();
+  }, [fetchCoins]);
 
   // const getRarityColor = (rarity: string) => {
   //   switch (rarity?.toLowerCase()) {
@@ -75,11 +66,11 @@ const CryptoAssets = () => {
           <TabsContent value="crypto" className="mt-4 space-y-3 px-4">
             <div className="space-y-3 pb-32">
               <div className="mt-4 space-y-3 px-4 max-w-2xl mx-auto">
-                {coins.length === 0 && (
+                {coinData.length === 0 && (
                   <p className="text-gray-400">No coin selected.</p>
                 )}
               </div>
-              {coins.map((coin) => (
+              {coinData.map((coin) => (
                 <Card
                   key={coin.id}
                   className="bg-gray-800 border-gray-700 cursor-pointer"

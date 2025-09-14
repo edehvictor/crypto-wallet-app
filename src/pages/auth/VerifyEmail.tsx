@@ -72,8 +72,8 @@ export default function VerifyEmail() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col font-sora items-center justify-center p-4 bg-[#70FF00]">
-      <div className="w-full max-w-md rounded-lg bg-[#181818] p-8 shadow-md">
+    <div className="flex min-h-screen flex-col font-sora items-center justify-center p-4 bg-[#181818]">
+      <div className="w-full max-w-md rounded-lg bg-[#303030] p-8 shadow-md">
         <div className="flex flex-col items-center justify-center space-y-4">
           <p className="text-center text-slate-100 font-montserrat font-medium">
             Check your email to verify your account before logging in.

@@ -60,12 +60,16 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-screen  flex flex-col justify-center items-center [#F7F5F4] p-4">
+    <div className="relative min-h-screen w-screen bg-[#181818]  flex flex-col justify-center items-center [#F7F5F4] p-4">
       <div className="w-full max-w-md mx-auto">
-        <Card className="shadow-md border rounded-2xl">
+        <Card className="shadow-md border-0 rounded-2xl bg-[#303030] ">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
-            <CardDescription>Login to access your BYKD account</CardDescription>
+            <CardTitle className="text-2xl font-bold text-slate-100">
+              Welcome Back
+            </CardTitle>
+            <CardDescription className="text-slate-200">
+              Login to access your BYKD account
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -79,15 +83,15 @@ const Login = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="text-slate-100">Email</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Mail className="absolute  right-2 top-2 text-gray-600  w-5 h-5" />
+                          <Mail className="absolute  right-2 top-2 text-gray-100  w-5 h-5" />
                           <Input
                             type="email"
                             placeholder="example@email.com"
                             {...field}
-                            className="text-gray-950 placeholder-gray-900 border border-gray-400 focus:border-gray-300 "
+                            className="text-gray-950  placeholder:text-[#98A2B3]  border border-gray-400 focus:border-gray-300 "
                           />
                         </div>
                       </FormControl>
@@ -102,10 +106,10 @@ const Login = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="text-slate-100">Password</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-100 w-5 h-5" />
                           <Input
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
@@ -117,9 +121,9 @@ const Login = () => {
                             className="absolute right-3 top-1/2 transform cursor-pointer -translate-y-1/2 bg-none"
                           >
                             {showPassword ? (
-                              <EyeOff className="text-gray-600" size={18} />
+                              <EyeOff className="text-gray-100" size={18} />
                             ) : (
-                              <Eye className="text-gray-600" size={18} />
+                              <Eye className="text-gray-100" size={18} />
                             )}
                           </div>
                         </div>
@@ -129,7 +133,7 @@ const Login = () => {
                   )}
                 />
                 <div className="flex justify-between ">
-                  <label className="flex items-center  text-black">
+                  <label className="flex items-center  text-slate-100">
                     <input
                       type="checkbox"
                       checked={remember}
@@ -141,7 +145,7 @@ const Login = () => {
 
                   <label className="flex justify-between cursor-pointer text-sm space-x-1">
                     <span
-                      className=" hover:underline"
+                      className=" hover:underline text-slate-100"
                       onClick={handleForgotPassword}
                     >
                       Forgot password
@@ -152,17 +156,17 @@ const Login = () => {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-black cursor-pointer text-base"
+                  className="w-full bg-black disabled:text-slate-100 cursor-pointer text-base"
                 >
                   {" "}
                   {isLoading ? "logging in..." : "Sign In"}
                 </Button>
 
-                <p className="text-sm text-center cursor-pointer hover:underline">
+                <p className="text-sm text-center text-slate-100 cursor-pointer hover:underline">
                   Don't have an account?{" "}
                   <span
                     onClick={() => navigate("/auth/signup")}
-                    className="text-blue-600"
+                    className="text-gray-200"
                   >
                     Sign up
                   </span>

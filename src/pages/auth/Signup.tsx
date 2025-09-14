@@ -65,12 +65,14 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-screen  flex flex-col justify-center items-center g-[#F7F5F4] p-4">
-      <div className="w-full max-w-2xl mx-auto bg-[#303030]">
-        <Card className="shadow-lg border  rounded-2xl px-4">
+    <div className="relative min-h-screen w-screen bg-[#181818]  flex flex-col justify-center items-center g-[#F7F5F4] p-4">
+      <div className="w-full max-w-2xl mx-auto ">
+        <Card className="shadow-lg bg-[#303030] rounded-2xl px-4 border-0">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-2xl font-bold text-white">
+              Create Account
+            </CardTitle>
+            <CardDescription className="text-slate-300">
               Join Trust Wallet to manage your crypto portfolio
             </CardDescription>
           </CardHeader>
@@ -86,9 +88,15 @@ const Signup = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel className="text-slate-100">
+                          First Name
+                        </FormLabel>
                         <FormControl>
-                          <Input placeholder="John" {...field} />
+                          <Input
+                            placeholder="John"
+                            {...field}
+                            className="text-slate-100 placeholder:text-[#98A2B3]"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -100,9 +108,15 @@ const Signup = () => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel className="text-slate-100">
+                          Last Name
+                        </FormLabel>
                         <FormControl>
-                          <Input placeholder="Doe" {...field} />
+                          <Input
+                            placeholder="Doe"
+                            {...field}
+                            className="placeholder:text-[#98A2B3]"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -114,15 +128,15 @@ const Signup = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email </FormLabel>
+                      <FormLabel className="text-slate-100">Email </FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Mail className="absolute  right-2 top-2 text-gray-600  w-5 h-5" />
+                          <Mail className="absolute  right-2 top-2 text-gray-200  w-5 h-5" />
                           <Input
                             type="email"
                             placeholder="example@email.com"
                             {...field}
-                            className="text-gray-950 placeholder-gray-900 border border-gray-400 focus:border-gray-300 "
+                            className="text-gray-950 placeholder:text-[#98A2B3] border border-gray-400 focus:border-gray-300 "
                           />
                         </div>
                       </FormControl>
@@ -135,10 +149,10 @@ const Signup = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="text-slate-100">Password</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-200 w-5 h-5" />
                           <Input
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
@@ -150,9 +164,9 @@ const Signup = () => {
                             className="absolute right-3 top-1/2 transform cursor-pointer -translate-y-1/2 bg-none"
                           >
                             {showPassword ? (
-                              <EyeOff className="text-gray-600" size={18} />
+                              <EyeOff className="text-gray-200" size={18} />
                             ) : (
-                              <Eye className="text-gray-600" size={18} />
+                              <Eye className="text-gray-200" size={18} />
                             )}
                           </div>
                         </div>
@@ -166,10 +180,12 @@ const Signup = () => {
                   name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Confirm Password</FormLabel>
+                      <FormLabel className="text-slate-100">
+                        Confirm Password
+                      </FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-200 w-5 h-5" />
                           <Input
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="Enter your password"
@@ -183,9 +199,9 @@ const Signup = () => {
                             className="absolute right-3 top-1/2 transform cursor-pointer -translate-y-1/2 bg-none"
                           >
                             {showPassword ? (
-                              <EyeOff className="text-gray-600" size={18} />
+                              <EyeOff className="text-gray-200" size={18} />
                             ) : (
-                              <Eye className="text-gray-600" size={18} />
+                              <Eye className="text-gray-200" size={18} />
                             )}
                           </div>
                         </div>
@@ -195,21 +211,24 @@ const Signup = () => {
                   )}
                 />
                 <div className="flex justify-between ">
-                  <label className="flex items-center  text-black">
+                  <label className="flex items-center  text-slate-100">
                     <input
                       type="checkbox"
                       checked={remember}
                       onChange={() => setRemember(!remember)}
-                      className="mr-2 "
+                      className="mr-2 text-slate-100"
                     />
                     Remember me
                   </label>
 
                   <label className="flex justify-between cursor-pointer text-sm space-x-1">
-                    <span className=""> Already have an account?</span>
+                    <span className="text-slate-100">
+                      {" "}
+                      Already have an account?
+                    </span>
                     <span
                       onClick={() => navigate("/auth/login")}
-                      className="text-blue-600"
+                      className="text-slate-300"
                     >
                       sign in
                     </span>
@@ -220,7 +239,7 @@ const Signup = () => {
                   type="submit"
                   variant={"default"}
                   disabled={isLoading}
-                  className=" w-full bg-black text-white font-semibold"
+                  className=" w-full bg-black disabled:text-slate-100 text-white cursor-pointer font-semibold"
                 >
                   {isLoading ? "Creating Account..." : "Sign up"}
                 </Button>
