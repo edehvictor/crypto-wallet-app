@@ -1,5 +1,8 @@
 import type { NavItem } from "@/types/types";
-import { Button } from "./ui/button";
+
+import { useEffect, useState } from "react";
+import { firebaseAuthService } from "@/services/authservice";
+import { LayoutPanelTop, LogOut } from "lucide-react";
 
 const MobileHeader = ({
   isOpen,
@@ -10,6 +13,27 @@ const MobileHeader = ({
   setIsOpen: (value: boolean) => void;
   navItems: NavItem[];
 }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkIsAuthenticated = async () => {
+      setIsLoading(true);
+      try {
+        const profile = await firebaseAuthService.getCurrentUser();
+        console.log(profile.authenticated, "authenticated");
+        if (profile.authenticated) {
+          setIsAuthenticated(profile.authenticated);
+        }
+      } catch (error) {
+        console.error("Authentication check failed:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkIsAuthenticated();
+  }, [isAuthenticated]);
   return (
     <div
       className={`fixed lg:hidden h-[320px] bg-white transition-all duration-300 ease-in-out w-[300px] flex justify-end z-50  right-10  top-32 ${
@@ -34,13 +58,24 @@ const MobileHeader = ({
               </div>
             ))}
           </nav>
-          <div className="pt-3 mt-3 border-t border-blue-700/50 space-y-3">
-            <Button
-              asChild
-              className="w-fit bg-[#3d3dff]  px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 text-white "
-            >
-              <a href="#assessment-form">Get started</a>
-            </Button>
+          <div className="hidden lg:flex items-center space-x-4">
+            {isAuthenticated && !isLoading ? (
+              <a
+                href="/dashboard"
+                className="bg-[#70FF00] text-gray-900 font-sora rounded-lg px-3 py-2 md:px-5 md:py-2 shadow-lg flex items-center justify-center gap-2 text-sm md:text-base font-medium transition-all hover:shadow-xl"
+              >
+                <LayoutPanelTop className="w-5" />
+                <span className="inline">Connect wallet</span>
+              </a>
+            ) : (
+              <a
+                href="/auth/signup"
+                className="bg-[#70FF00] text-[#181818] font-marlin rounded-lg px-3 py-2 md:px-6 md:py-2 shadow-lg flex items-center justify-center gap-2 text-sm md:text-base font-medium transition-all hover:shadow-xl"
+              >
+                <span className="inline">Connect wallet</span>
+                <LogOut className="w-5" />
+              </a>
+            )}
           </div>
         </div>
       </div>

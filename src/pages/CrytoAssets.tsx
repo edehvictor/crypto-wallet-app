@@ -15,14 +15,13 @@ const CryptoAssets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [coins, setCoins] = useState<CoinMarket[]>([]);
   // const { selectedCoins } = useCoinStore();
-  const { coinData, fetchCoins } = useCoinStore();
+  const { coinData, initializeCoins } = useCoinStore();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchCoins();
-    // fetchSelected();
-  }, [fetchCoins]);
+    initializeCoins();
+  }, [initializeCoins]);
 
   // const getRarityColor = (rarity: string) => {
   //   switch (rarity?.toLowerCase()) {

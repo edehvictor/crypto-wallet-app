@@ -24,8 +24,13 @@ const SearchCryptoModal = ({ isOpen, onClose }: SearchCryptoModalProps) => {
 
   useEffect(() => {
     const loadCoins = async () => {
-      const data = await fetchCoinList();
-      setCoinList(data);
+      try {
+        const data = await fetchCoinList();
+        setCoinList(Array.isArray(data) ? data : []); // always an array
+      } catch (error) {
+        console.error("Failed to fetch coins:", error);
+        setCoinList([]); // fallback to empty
+      }
     };
     loadCoins();
   }, []);
@@ -38,10 +43,10 @@ const SearchCryptoModal = ({ isOpen, onClose }: SearchCryptoModalProps) => {
     }
   };
 
-  const filteredTokens = coinList.filter(
+  const filteredTokens = (coinList || []).filter(
     (token) =>
-      token.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      token.symbol.toLowerCase().includes(searchQuery.toLowerCase())
+      token?.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      token?.symbol?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const sortedTokens = [...filteredTokens].sort((a, b) => {
