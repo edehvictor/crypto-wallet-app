@@ -1,0 +1,236 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { firebaseAuthService } from "@/services/authservice";
+import { useState } from "react";
+import { Mail, Lock, EyeOff, Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+const formSchema = z
+  .object({
+    firstName: z.string().min(2, { message: "Enter your first name" }),
+    lastName: z.string().min(2, { message: "Enter your last name" }),
+    email: z.string().email({ message: "Enter a valid email address" }),
+    password: z
+      .string()
+      .min(6, { message: "Password must be at least 6 characters" }),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+const Signup = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [remember, setRemember] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, sethowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
+  // const [isForgotPassword, setIsForgotPassword] = useState(false);
+  // const [resetEmail, setResetEmail] = useState("");
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
+    await firebaseAuthService.handleSignUp(values);
+    setIsLoading(false);
+  };
+
+  return (
+    <div className="relative min-h-screen w-screen  flex flex-col justify-center items-center g-[#F7F5F4] p-4">
+      <div className="w-full max-w-2xl mx-auto bg-[#303030]">
+        <Card className="shadow-lg border  rounded-2xl px-4">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
+            <CardDescription>
+              Join Trust Wallet to manage your crypto portfolio
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="John" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Doe" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email </FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <Mail className="absolute  right-2 top-2 text-gray-600  w-5 h-5" />
+                          <Input
+                            type="email"
+                            placeholder="example@email.com"
+                            {...field}
+                            className="text-gray-950 placeholder-gray-900 border border-gray-400 focus:border-gray-300 "
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+                          <Input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            {...field}
+                            className={`w-full border rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
+                          />
+                          <div
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-1/2 transform cursor-pointer -translate-y-1/2 bg-none"
+                          >
+                            {showPassword ? (
+                              <EyeOff className="text-gray-600" size={18} />
+                            ) : (
+                              <Eye className="text-gray-600" size={18} />
+                            )}
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+                          <Input
+                            type={showConfirmPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            {...field}
+                            className={`w-full border rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
+                          />
+                          <div
+                            onClick={() =>
+                              sethowConfirmPassword(!showConfirmPassword)
+                            }
+                            className="absolute right-3 top-1/2 transform cursor-pointer -translate-y-1/2 bg-none"
+                          >
+                            {showPassword ? (
+                              <EyeOff className="text-gray-600" size={18} />
+                            ) : (
+                              <Eye className="text-gray-600" size={18} />
+                            )}
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="flex justify-between ">
+                  <label className="flex items-center  text-black">
+                    <input
+                      type="checkbox"
+                      checked={remember}
+                      onChange={() => setRemember(!remember)}
+                      className="mr-2 "
+                    />
+                    Remember me
+                  </label>
+
+                  <label className="flex justify-between cursor-pointer text-sm space-x-1">
+                    <span className=""> Already have an account?</span>
+                    <span
+                      onClick={() => navigate("/auth/login")}
+                      className="text-blue-600"
+                    >
+                      sign in
+                    </span>
+                  </label>
+                </div>
+
+                <Button
+                  type="submit"
+                  variant={"default"}
+                  disabled={isLoading}
+                  className=" w-full bg-black text-white font-semibold"
+                >
+                  {isLoading ? "Creating Account..." : "Sign up"}
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default Signup;
