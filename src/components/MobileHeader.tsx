@@ -36,13 +36,13 @@ const MobileHeader = ({
   }, [isAuthenticated]);
   return (
     <div
-      className={`fixed lg:hidden h-[320px] bg-[#303030] transition-all duration-300 ease-in-out w-[300px] flex justify-end z-50  right-10  top-32 ${
-        isOpen ? " opacity-100 mt-4" : "max-h-0 opacity-0 overflow-hidden"
+      className={` lg:hidden rounded-2xl h-[250px] w-[300px]  mx-auto justify-center items-center bg-[#303030] transition-all duration-300 ease-in-out  z-50   top -32 ${
+        isOpen ? " opacity-100 " : "max -h-0 opacity-0 overflow-hidden"
       }`}
     >
-      <div className="flex-1 overflow-hidden relative">
+      <div className=" overflow-hidden relative">
         <div
-          className={`absolute rounded-md inset-0 p-4 transform transition-transform duration-300 ease-in-out
+          className={` rounded-md inset-0 p-4 transform transition-transform duration-300 ease-in-out
           }`}
         >
           <nav className="space-y-">

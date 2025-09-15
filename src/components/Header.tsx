@@ -37,11 +37,11 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
   return (
     <main className="">
       <nav
-        className={` absolute top-2 z-50 transition-all duration-300  py-4 max-w-7xl mx-auto left-[50px]  right-[50px]
+        className={` px-4 top-2 z-50 transition-all duration-300  py-4 max-w-2xl mx-auto 
        ${className}`}
       >
         <div>
-          <div className=" px-4 sm:px-6 lg:px-8">
+          <div className=" px- sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <a
                 href="/"
@@ -99,8 +99,14 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
           </div>
         </div>
       </nav>
+      <div className=" ">
+        <MobileHeader
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          navItems={navItems}
+        />
+      </div>
       {/* Mobile Navigation */}
-      <MobileHeader isOpen={isOpen} setIsOpen={setIsOpen} navItems={navItems} />
     </main>
   );
 };

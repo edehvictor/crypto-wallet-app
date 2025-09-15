@@ -91,7 +91,7 @@ const Login = () => {
                             type="email"
                             placeholder="example@email.com"
                             {...field}
-                            className="text-gray-950  placeholder:text-[#98A2B3]  border border-gray-400 focus:border-gray-300 "
+                            className="text-slate-300  placeholder:text-[#98A2B3]  border border-gray-400 focus:border-gray-300 "
                           />
                         </div>
                       </FormControl>
@@ -114,7 +114,7 @@ const Login = () => {
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             {...field}
-                            className={`w-full border rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
+                            className={`w-full border text-slate-100 rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
                           />
                           <div
                             onClick={() => setShowPassword(!showPassword)}

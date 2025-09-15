@@ -157,7 +157,7 @@ const Signup = () => {
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             {...field}
-                            className={`w-full border rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
+                            className={`w-full border text-slate-100 rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
                           />
                           <div
                             onClick={() => setShowPassword(!showPassword)}
@@ -190,7 +190,7 @@ const Signup = () => {
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             {...field}
-                            className={`w-full border rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
+                            className={`w-full border text-slate-100 rounded-lg pl-10 pr-10 py-2 focus:ring outline-none placeholder:text-sm placeholder:text-[#98A2B3] `}
                           />
                           <div
                             onClick={() =>
@@ -228,9 +228,9 @@ const Signup = () => {
                     </span>
                     <span
                       onClick={() => navigate("/auth/login")}
-                      className="text-white underline"
+                      className="text-white  underline"
                     >
-                      sign in
+                      Sign in
                     </span>
                   </label>
                 </div>
