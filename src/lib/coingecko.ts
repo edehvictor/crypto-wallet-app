@@ -118,7 +118,7 @@ export const fetchCoinList = async (): Promise<CoinList[]> => {
   }
 
   try {
-    const res = await fetch("/api/coins/list");
+    const res = await fetch("https://api.coingecko.com/api/v3/coins/list");
     if (!res.ok) {
       if (res.status === 429) {
         console.warn(
@@ -146,7 +146,7 @@ export const fetchSelectedCoins = async (
 ): Promise<CoinMarket[]> => {
   if (!ids.length) return [];
 
-  const url = `/api/coins/markets?vs_currency=usd&ids=${ids.join(
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(
     ","
   )}&price_change_percentage=1h,24h`;
 
