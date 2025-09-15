@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
   return (
     <main className="">
       <nav
-        className={` px-4 top-2 z-50 transition-all duration-300  py-4 max-w-2xl mx-auto 
+        className={` px-4 top-2 z-50 transition-all duration-300  py-4 max-w-7xl mx-auto 
        ${className}`}
       >
         <div>
