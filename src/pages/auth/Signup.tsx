@@ -44,8 +44,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, sethowConfirmPassword] = useState(false);
   const navigate = useNavigate();
-  // const [isForgotPassword, setIsForgotPassword] = useState(false);
-  // const [resetEmail, setResetEmail] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -73,7 +71,7 @@ const Signup = () => {
               Create Account
             </CardTitle>
             <CardDescription className="text-slate-300">
-              Join Trust Wallet to manage your crypto portfolio
+              Join CWA to manage your crypto portfolio
             </CardDescription>
           </CardHeader>
           <CardContent>
