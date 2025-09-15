@@ -105,7 +105,7 @@ const CryptoAssets = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="text-right flex flex-row items-center space-x-3 ">
+                    <div className="text-right flex flex-row items-center space-x- ">
                       <div>
                         <div className="text-white font-semibold">
                           {formatBalance(balance)}

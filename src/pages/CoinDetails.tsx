@@ -88,7 +88,6 @@ export default function CoinDetailsPage() {
 
   return (
     <div className="min-h-screen w-full max-w-2xl pb-12 mx-auto text-white p-6 space-y-6 flex flex-col items-center overflow-y-scroll h-screen overflow-x-hidden">
-      {/* Header */}
       <div className="flex items-center justify-between w-full p-4 border-b border-[#2E2E2E] bg-[#1A1A1A] rounded-lg">
         <ArrowLeft
           className="w-6 h-6 cursor-pointer"
@@ -121,7 +120,7 @@ export default function CoinDetailsPage() {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-between px-6 mb-8">
+      <div className="flex justify-between w-full px-6 mb-8 max-w-2xl">
         {[
           { icon: ArrowUp, label: "Send" },
           { icon: ArrowDown, label: "Receive" },
@@ -138,7 +137,7 @@ export default function CoinDetailsPage() {
       </div>
 
       {/* Price Chart Section */}
-      <div className="px-4 mb-6">
+      <div className="px-4 mb-6 w-full">
         <div className="bg-gray-800 rounded-lg p-4 mb-4">
           <div className="h-40 w-full">
             {chartData.length > 0 ? (
@@ -193,7 +192,7 @@ export default function CoinDetailsPage() {
       </div>
 
       {/* Market Stats */}
-      <div className="px-4 pb-10">
+      <div className="px-4 w-full pb-10">
         <div className="bg-gray-800 rounded-xl p-6 shadow-lg">
           {/* Header */}
           <h3 className="text-xl font-bold text-white mb-4">

@@ -102,7 +102,7 @@ export default function SwapPage() {
 
       {/* Tab Content */}
       {activeTab === "swap" && (
-        <Card className="bg-[#1E1E1E] rounded-2xl p-4 w-full max-w-2xl space-y-3">
+        <Card className="bg-[#1E1E1E] rounded-2xl p-4 w-full border-0 max-w-2xl space-y-3">
           {/* From */}
           <div className="bg-[#2A2A2A] rounded-xl p-3 flex justify-between items-center">
             <div>
@@ -204,7 +204,7 @@ export default function SwapPage() {
       )}
 
       {activeTab === "hot" && (
-        <Card className="bg-[#1E1E1E] rounded-2xl p-4 w-full max-w-2xl mb-32 space-y-3">
+        <Card className="bg-[#1E1E1E] border-0 rounded-2xl p-4 w-full max-w-2xl mb-32 space-y-3">
           <h3 className="text-xl font-bold mb-4 text-white"> Hot Tokens</h3>
           {tokens.slice(0, 5).map((t) => (
             <div

@@ -13,8 +13,7 @@ import Swap from "./pages/Swap";
 import ActionButtonLayout from "./components/dashboard/ActionButtonsLayout";
 import Settings from "./pages/Settings";
 import History from "./pages/History";
-// import Earn from "./pages/Earn";
-import WalletDashboard from "./pages/WalletDashboard";
+import Earn from "./pages/Earn";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -99,7 +98,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <WalletDashboard />,
+        element: <Earn />,
       },
     ],
   },

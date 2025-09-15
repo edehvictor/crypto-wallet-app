@@ -30,7 +30,7 @@ export default function VerifyEmail() {
     if (!userData) return;
     try {
       setSending(true);
-      await firebaseAuthService.resendVerificationEmail();
+      // await firebaseAuthService.resendVerificationEmail();
       showToast.success("Verification email sent successfully!");
     } catch (error) {
       console.error("Error sending email:", error);

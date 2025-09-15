@@ -65,7 +65,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-screen bg-[#181818]  flex flex-col justify-center items-center g-[#F7F5F4] p-4">
+    <div className="relative min-h-screen w-screen bg-[#181818]  flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-2xl mx-auto ">
         <Card className="shadow-lg bg-[#303030] rounded-2xl px-4 border-0">
           <CardHeader className="text-center">
@@ -221,14 +221,14 @@ const Signup = () => {
                     Remember me
                   </label> */}
 
-                  <label className="flex justify-between cursor-pointer text-sm space-x-1">
+                  <label className="flex w-full justify-between cursor-pointer text-sm space-x-1">
                     <span className="text-slate-100">
                       {" "}
                       Already have an account?
                     </span>
                     <span
                       onClick={() => navigate("/auth/login")}
-                      className="text-slate-300"
+                      className="text-white underline"
                     >
                       sign in
                     </span>

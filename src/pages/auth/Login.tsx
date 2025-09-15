@@ -162,11 +162,11 @@ const Login = () => {
                   {isLoading ? "logging in..." : "Sign In"}
                 </Button>
 
-                <p className="text-sm text-center text-slate-100 cursor-pointer hover:underline">
+                <p className="text-sm text-center text-slate-100 cursor-pointer ">
                   Don't have an account?{" "}
                   <span
                     onClick={() => navigate("/auth/signup")}
-                    className="text-gray-200"
+                    className="text-white hover:underline"
                   >
                     Sign up
                   </span>
