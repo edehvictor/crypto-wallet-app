@@ -36,21 +36,21 @@ const MobileHeader = ({
   }, [isAuthenticated]);
   return (
     <div
-      className={`fixed lg:hidden h-[320px] bg-white transition-all duration-300 ease-in-out w-[300px] flex justify-end z-50  right-10  top-32 ${
+      className={`fixed lg:hidden h-[320px] bg-[#303030] transition-all duration-300 ease-in-out w-[300px] flex justify-end z-50  right-10  top-32 ${
         isOpen ? " opacity-100 mt-4" : "max-h-0 opacity-0 overflow-hidden"
       }`}
     >
       <div className="flex-1 overflow-hidden relative">
         <div
-          className={`absolute inset-0 p-4 transform transition-transform duration-300 ease-in-out
+          className={`absolute rounded-md inset-0 p-4 transform transition-transform duration-300 ease-in-out
           }`}
         >
-          <nav className="space-y-2">
+          <nav className="space-y-">
             {navItems.map((item) => (
               <div key={item.name}>
                 <a
                   href={item.href}
-                  className="block text-gray-700 text-sm hover:text-[#] font-medium py-3 px-3 rounded-lg hover:bg-blue-300 transition-all duration-200"
+                  className="block text-gray-200 text-sm hover:text-slate-50 font-medium py-3 px-3 rounded-lg hover:bg-[#181818] transition-all duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -58,7 +58,7 @@ const MobileHeader = ({
               </div>
             ))}
           </nav>
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="lg:hidden  items-center space-x-4">
             {isAuthenticated && !isLoading ? (
               <a
                 href="/dashboard"

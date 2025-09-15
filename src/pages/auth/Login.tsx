@@ -68,7 +68,7 @@ const Login = () => {
               Welcome Back
             </CardTitle>
             <CardDescription className="text-slate-200">
-              Login to access your BYKD account
+              Login to access your account
             </CardDescription>
           </CardHeader>
           <CardContent>

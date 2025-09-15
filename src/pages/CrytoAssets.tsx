@@ -13,30 +13,21 @@ import { useNavigate } from "react-router-dom";
 const CryptoAssets = () => {
   const [activeTab, setActiveTab] = useState<"crypto" | "nfts">("crypto");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [coins, setCoins] = useState<CoinMarket[]>([]);
-  // const { selectedCoins } = useCoinStore();
   const { coinData, initializeCoins } = useCoinStore();
 
   const navigate = useNavigate();
 
+  const balance = 0;
+  const value = 0.0;
+
+  const formatBalance = (balance: number): string => {
+    if (balance >= 1) return balance.toFixed(2);
+    return balance.toFixed(2);
+  };
+
   useEffect(() => {
     initializeCoins();
   }, [initializeCoins]);
-
-  // const getRarityColor = (rarity: string) => {
-  //   switch (rarity?.toLowerCase()) {
-  //     case "common":
-  //       return "bg-gray-100 text-gray-800";
-  //     case "rare":
-  //       return "bg-blue-100 text-blue-800";
-  //     case "epic":
-  //       return "bg-purple-100 text-purple-800";
-  //     case "legendary":
-  //       return "bg-yellow-100 text-yellow-800";
-  //     default:
-  //       return "bg-gray-100 text-gray-800";
-  //   }
-  // };
 
   return (
     <div className="w-full">
@@ -114,8 +105,18 @@ const CryptoAssets = () => {
                         </div>
                       </div>
                     </div>
+                    <div className="text-right flex flex-row items-center space-x-3 ">
+                      <div>
+                        <div className="text-white font-semibold">
+                          {formatBalance(balance)}
+                        </div>
+                        <div className="text-gray-400 text-sm">
+                          $ {value.toLocaleString()}
+                        </div>
+                      </div>
 
-                    <ChevronRight className="w-4 h-4 text-gray-500" />
+                      <ChevronRight className="w-4 h-4 text-gray-500" />
+                    </div>
                   </CardContent>
                 </Card>
               ))}

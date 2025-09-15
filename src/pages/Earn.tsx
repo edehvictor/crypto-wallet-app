@@ -4,8 +4,8 @@ import { Zap } from "lucide-react";
 
 const Earn: React.FC = () => {
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4">
-      <Card className="w-full max-w-md text-center bg-[#303030]">
+    <div className="min-h-screen  flex items-center justify-center p-4 bg-[#1A1A1A]">
+      <Card className="w-full max-w-md text-center bg-[#303030] border-0">
         <CardHeader>
           <Zap className="h-12 w-12 text-slate-200 mx-auto mb-2" />
           <CardTitle className="text-xl font-bold text-slate-100">

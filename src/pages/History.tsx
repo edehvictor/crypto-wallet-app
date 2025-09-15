@@ -23,7 +23,7 @@ const TrustWalletHistoryPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full max-w-2xl mx-auto p-4 sm:p-6 text-white flex flex-col items-center">
+    <div className="min-h-screen w-full max-w-2xl mx-auto p-4 sm:p-6 text-white flex flex-col h-screen overflow-y-auto items-center">
       {/* Header */}
       <div className="flex items-center justify-between w-full p-4 border-b border-[#2E2E2E] bg-[#1A1A1A] rounded-lg">
         <ArrowLeft
@@ -39,19 +39,19 @@ const TrustWalletHistoryPage: React.FC = () => {
         <TabsList className="grid grid-cols-3 bg-[#2A2A2A] rounded-lg p-1">
           <TabsTrigger
             value="all"
-            className="data-[state=active]:bg-[#3A3A3A] data-[state=active]:text-white"
+            className="data-[state=active]:bg-[#3A3A3A] data-[state=active]:text-white text-gray-300"
           >
             All
           </TabsTrigger>
           <TabsTrigger
             value="sent"
-            className="data-[state=active]:bg-[#3A3A3A] data-[state=active]:text-white"
+            className="data-[state=active]:bg-[#3A3A3A] data-[state=active]:text-white text-gray-300"
           >
             Sent
           </TabsTrigger>
           <TabsTrigger
             value="received"
-            className="data-[state=active]:bg-[#3A3A3A] data-[state=active]:text-white"
+            className="data-[state=active]:bg-[#3A3A3A] data-[state=active]:text-white text-gray-300"
           >
             Received
           </TabsTrigger>
@@ -113,17 +113,19 @@ const TrustWalletHistoryPage: React.FC = () => {
           {/* Transaction List or Empty State */}
           <Card className="mt-4 border-none bg-[#2A2A2A]">
             <CardHeader>
-              <CardTitle className="text-sm font-medium text-gray-300">
+              <CardTitle className="text-sm font-medium text-slate-100">
                 Transactions
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center justify-center py-12 text-gray-500">
                 <div className="p-4 rounded-full bg-[#3A3A3A] mb-3">
-                  <History className="w-8 h-8 text-gray-400" />
+                  <History className="w-8 h-8 text-gray-200" />
                 </div>
-                <p className="text-base font-medium">No transactions yet</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-base font-medium text-slate-200">
+                  No transactions yet
+                </p>
+                <p className="text-xs text-gray-200 mt-1">
                   Your transaction history will appear here after your first
                   transaction.
                 </p>
@@ -134,17 +136,23 @@ const TrustWalletHistoryPage: React.FC = () => {
 
         {/* Sent Tab */}
         <TabsContent value="sent">
-          <div className="flex flex-col items-center justify-center py-12 text-gray-500 text-center">
-            <p className="text-base font-medium">No sent transactions.</p>
-            <p className="text-xs">Your sent transactions will appear here.</p>
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <p className="text-base font-medium text-slate-100">
+              No sent transactions.
+            </p>
+            <p className="text-xs text-gray-200">
+              Your sent transactions will appear here.
+            </p>
           </div>
         </TabsContent>
 
         {/* Received Tab */}
         <TabsContent value="received">
-          <div className="flex flex-col items-center justify-center py-12 text-gray-500 text-center">
-            <p className="text-base font-medium">No received transactions.</p>
-            <p className="text-xs">
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <p className="text-base font-medium text-slate-200">
+              No received transactions.
+            </p>
+            <p className="text-xs text-gray-200">
               Your received transactions will appear here.
             </p>
           </div>

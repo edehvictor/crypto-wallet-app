@@ -54,7 +54,7 @@ export const cryptoTokens: CryptoToken[] = [
 export const accounts: Account[] = [
   {
     id: "1",
-    name: "Main wallet",
+    name: "Account 1",
     address: "0x1234567890abcdef1234567890abcdef12345678",
     balance: 0.0,
   },

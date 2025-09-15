@@ -40,7 +40,7 @@ const formSchema = z
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [remember, setRemember] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, sethowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -115,7 +115,7 @@ const Signup = () => {
                           <Input
                             placeholder="Doe"
                             {...field}
-                            className="placeholder:text-[#98A2B3]"
+                            className="placeholder:text-[#98A2B3] text-slate-100"
                           />
                         </FormControl>
                         <FormMessage />
@@ -136,7 +136,7 @@ const Signup = () => {
                             type="email"
                             placeholder="example@email.com"
                             {...field}
-                            className="text-gray-950 placeholder:text-[#98A2B3] border border-gray-400 focus:border-gray-300 "
+                            className=" placeholder:text-[#98A2B3] text-slate-100 border border-gray-400 focus:border-gray-300 "
                           />
                         </div>
                       </FormControl>
@@ -211,7 +211,7 @@ const Signup = () => {
                   )}
                 />
                 <div className="flex justify-between ">
-                  <label className="flex items-center  text-slate-100">
+                  {/* <label className="flex items-center  text-slate-100">
                     <input
                       type="checkbox"
                       checked={remember}
@@ -219,7 +219,7 @@ const Signup = () => {
                       className="mr-2 text-slate-100"
                     />
                     Remember me
-                  </label>
+                  </label> */}
 
                   <label className="flex justify-between cursor-pointer text-sm space-x-1">
                     <span className="text-slate-100">

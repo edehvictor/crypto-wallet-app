@@ -7,7 +7,9 @@ import {
   Link,
   Ban,
   ChevronRight,
+  ArrowLeft,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface SettingItemProps {
   icon: ReactElement;
@@ -31,9 +33,18 @@ const SettingItem: FC<SettingItemProps> = ({ icon, title, subtitle }) => {
 };
 
 const Settings: FC = () => {
+  const navigate = useNavigate();
   return (
-    <div className="min-h-screen w-full max-w-2xl mx-auto  text-white p-6 space-y-6 flex flex-col items-center overflow-y-scroll h-screen">
-      <h2 className="text-2xl font-bold">Settings</h2>
+    <div className="min-h-screen w-full max-w-2xl pb-12 mx-auto text-white p-6 space-y-6 flex flex-col items-center overflow-y-scroll h-screen">
+      {/* Header */}
+      <div className="flex items-center justify-between w-full p-4 border-b border-[#2E2E2E] bg-[#1A1A1A] rounded-lg">
+        <ArrowLeft
+          className="w-6 h-6 cursor-pointer"
+          onClick={() => navigate(-1)}
+        />
+        <h2 className="text-2xl font-bold">Setting</h2>
+        <div className="w-6 h-6" />
+      </div>
 
       <div className="w-full max-w-2xl space-y-6  ">
         <SettingItem
@@ -51,7 +62,7 @@ const Settings: FC = () => {
           <SettingItem icon={<Book size={20} />} title="Address Book" />
           <SettingItem icon={<Book size={20} />} title="Address Book" />
           <SettingItem icon={<Code size={20} />} title="Developer settings" />
-          <SettingItem icon={<Code size={20} />} title="Help and Support" />
+
           <SettingItem
             icon={<Link size={20} />}
             title="Connected dApps"

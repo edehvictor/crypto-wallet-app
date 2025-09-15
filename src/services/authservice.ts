@@ -7,7 +7,6 @@ import {
   setPersistence,
   browserLocalPersistence,
   fetchSignInMethodsForEmail,
-  sendEmailVerification,
   type User,
   sendPasswordResetEmail,
 } from "firebase/auth";
@@ -72,26 +71,25 @@ class FirebaseAuthService {
       if (!user) throw new Error("User not returned from signUp");
 
       //  Send email verification
-      await sendEmailVerification(user, {
-        url: `${window.location.origin}/auth/email-verified`,
-        handleCodeInApp: true,
-      });
+      // await sendEmailVerification(user, {
+      //   url: `${window.location.origin}/auth/email-verified`,
+      //   handleCodeInApp: true,
+      // });
 
-      //  Save user profile in Firestore
       await setDoc(doc(this.db, "profile", user.uid), {
         id: user.uid,
         email: values.email,
         firstName: values.firstName,
         lastName: values.lastName,
-        emailVerified: false,
+        authenticated: false,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       });
 
-      console.log(user, "user");
+      // console.log(user, "user");
       await this.saveSessionToCookies(user);
       showToast.message("Account created successfully");
-      window.location.href = "/auth/verifyemail";
+      window.location.href = "/auth/login";
 
       return user;
     } catch (error) {
@@ -102,11 +100,8 @@ class FirebaseAuthService {
     }
   }
 
-  // Sign In with Email Verification & Email Existence Check
   public async handleSignIn(values: { email: string; password: string }) {
     try {
-      //  Check if email exists in Firebase Auth
-
       if (!(await this.emailExists(values.email))) {
         showToast.error("Email is not registered. Please sign up first.");
         return null;
@@ -118,16 +113,16 @@ class FirebaseAuthService {
       );
       const user = userCred.user;
 
-      //  If email is verified, update Firestore
-      if (user.emailVerified) {
+      //  If authenticated is true, update Firestore
+      if (user.uid) {
         const profileRef = doc(this.db, "profile", user.uid);
         await setDoc(
           profileRef,
-          { emailVerified: true, updated_at: new Date().toISOString() },
+          { authenticated: true, updated_at: new Date().toISOString() },
           { merge: true }
         );
       } else {
-        showToast.error("Please verify your email before logging in.");
+        showToast.error("Please sure you're authenticated.");
         return null;
       }
 
@@ -143,15 +138,15 @@ class FirebaseAuthService {
     }
   }
 
-  public async resendVerificationEmail() {
-    const user = await this.getSession();
-    if (user && !user.emailVerified) {
-      await sendEmailVerification(user);
-      showToast.message("Verification email resent successfully!");
-    } else {
-      showToast.error("User already verified or not logged in.");
-    }
-  }
+  // public async resendVerificationEmail() {
+  //   const user = await this.getSession();
+  //   if (user && !user.emailVerified) {
+  //     await sendEmailVerification(user);
+  //     showToast.message("Verification email resent successfully!");
+  //   } else {
+  //     showToast.error("User already verified or not logged in.");
+  //   }
+  // }
 
   private async emailExists(email: string) {
     const q = query(
@@ -259,7 +254,7 @@ class FirebaseAuthService {
       const token = await user.getIdToken();
       const expiry = new Date(Date.now() + 60 * 60 * 1000); // 1h expiry
       Cookies.set("wallet--accessToken", token, { expires: expiry });
-      console.log("Saved session token to cookies");
+      // console.log("Saved session token to cookies");
     } catch (error) {
       console.error("Error saving session to cookies:", error);
     }

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Home, Gift, Settings, ArrowLeftRight, FileClock } from "lucide-react";
 import { NavLink } from "react-router";
-import { firebaseAuthService } from "@/services/authservice";
 
 interface NavigationItem {
   icon: React.ComponentType<{ className?: string }>;
@@ -79,12 +78,6 @@ interface NavBottomProps {
 }
 
 const NavBottom: React.FC<NavBottomProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    firebaseAuthService.getCurrentUser().then((u) => {
-      console.log(u, "user details");
-    });
-  }, []);
-
   return (
     <aside className="w-full fixed bottom-0 left-1/2 -translate-x-1/2 bg-[#181818] border-t border-[#424242] z-50">
       <nav className="flex flex-row justify-between items-center max-w-2xl mx-auto px-4 py-2">

@@ -9,9 +9,9 @@ export async function requireAuth() {
     const firebaseUser = userData.user;
     const profileData = userData.profile;
 
-    console.log("Firebase User:", firebaseUser);
-    console.log("Firestore Profile:", profileData);
-    console.log("Authenticated:", userData.authenticated);
+    // console.log("Firebase User:", firebaseUser);
+    // console.log("Firestore Profile:", profileData);
+    // console.log("Authenticated:", userData.authenticated);
 
     if (!userData.authenticated || !firebaseUser) {
       console.log("User not authenticated, redirecting to signup");
@@ -19,7 +19,7 @@ export async function requireAuth() {
     }
 
     if (!userData.authenticated) {
-      console.log("Profile data missing, redirecting to complete profile");
+      // console.log("Profile data missing, redirecting to complete profile");
       showToast.error("Please check if your're signed in");
     }
 
@@ -31,7 +31,7 @@ export async function requireAuth() {
       console.warn("Store update failed:", storeError);
     }
 
-    console.log("Auth check successful, user can proceed");
+    // console.log("Auth check successful, user can proceed");
     return { user: userData.authenticated };
   } catch (error) {
     console.error("Auth check failed:", error);
