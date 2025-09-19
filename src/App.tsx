@@ -13,7 +13,11 @@ import Swap from "./pages/Swap";
 import ActionButtonLayout from "./components/dashboard/ActionButtonsLayout";
 import Settings from "./pages/Settings";
 import History from "./pages/History";
+import ApplicantDetails from "./pages/admin/ApplicantDetails";
 import Earn from "./pages/Earn";
+import AdminDashboardLayout from "./pages/admin/AdminDashboardLayout";
+import AdminDashboardOverview from "./pages/admin/AdminDashboardOverview";
+import UserManagement from "./pages/admin/UserManagement";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -99,6 +103,25 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Earn />,
+      },
+    ],
+  },
+
+  {
+    path: "/admin/dashboard",
+    element: <AdminDashboardLayout />,
+    children: [
+      {
+        element: <AdminDashboardOverview />,
+        index: true,
+      },
+      {
+        element: <UserManagement />,
+        path: "/admin/dashboard/users/",
+      },
+      {
+        element: <ApplicantDetails />,
+        path: "/admin/dashboard/users/:id",
       },
     ],
   },

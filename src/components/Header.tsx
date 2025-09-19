@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LayoutPanelTop, LogOut, Menu, Wallet, X } from "lucide-react";
 import MobileHeader from "./MobileHeader";
 import { firebaseConfig } from "@/lib/firebase";
-import { firebaseAuthService } from "@/services/authservice";
+import { firebaseAuthService } from "@/services/auth.service";
 import { navItems } from "@/constants/Dummy";
 
 interface NavbarProps {

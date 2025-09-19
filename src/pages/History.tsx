@@ -125,7 +125,7 @@ const TrustWalletHistoryPage: React.FC = () => {
                 <p className="text-base font-medium text-slate-200">
                   No transactions yet
                 </p>
-                <p className="text-xs text-gray-200 mt-1">
+                <p className="text-xs text-center text-gray-200 mt-1">
                   Your transaction history will appear here after your first
                   transaction.
                 </p>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { firebaseAuthService } from "@/services/authservice";
+import { firebaseAuthService } from "@/services/auth.service";
 import { getAuth, type User } from "firebase/auth";
 import showToast from "@/utils/toast.utils";
 
@@ -30,7 +30,7 @@ export default function VerifyEmail() {
     if (!userData) return;
     try {
       setSending(true);
-      // await firebaseAuthService.resendVerificationEmail();
+
       showToast.success("Verification email sent successfully!");
     } catch (error) {
       console.error("Error sending email:", error);
@@ -48,7 +48,7 @@ export default function VerifyEmail() {
         return;
       }
 
-      await auth.currentUser.reload(); // refresh user info
+      await auth.currentUser.reload();
       if (auth.currentUser.emailVerified) {
         showToast.success("Email verified successfully! Redirecting...");
         window.location.href = "/auth/login";

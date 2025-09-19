@@ -26,7 +26,8 @@ export default function SwapPage() {
   const [activeTab, setActiveTab] = useState("swap");
   const navigate = useNavigate();
 
-  const fromTokenBalance = 1000;
+  // Assume this is the user's balance (you can replace with real data)
+  const fromTokenBalance = 1000; // Example: user has 1000 units
 
   useEffect(() => {
     async function fetchCoins() {

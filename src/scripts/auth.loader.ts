@@ -1,7 +1,7 @@
 import { redirect } from "react-router";
 import showToast from "@/utils/toast.utils";
 import { useAuthStore, type Profile } from "@/hooks/useProfile";
-import { firebaseAuthService } from "@/services/authservice";
+import { firebaseAuthService } from "@/services/auth.service";
 
 export async function requireAuth() {
   try {

@@ -8,7 +8,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { firebaseAuthService } from "@/services/authservice";
+import { firebaseAuthService } from "@/services/auth.service";
 import showToast from "@/utils/toast.utils";
 
 const ForgotPassword = () => {

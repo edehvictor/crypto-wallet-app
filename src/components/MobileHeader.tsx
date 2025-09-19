@@ -1,7 +1,7 @@
 import type { NavItem } from "@/types/types";
 
 import { useEffect, useState } from "react";
-import { firebaseAuthService } from "@/services/authservice";
+import { firebaseAuthService } from "@/services/auth.service";
 import { LayoutPanelTop, LogOut } from "lucide-react";
 
 const MobileHeader = ({

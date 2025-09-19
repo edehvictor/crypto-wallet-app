@@ -18,15 +18,15 @@ interface ActionButton {
 }
 
 const ActionButton = () => {
-  const totalBalance = 1234.56;
+  const totalBalance = 0.0;
   const [showBalance, setShowBalance] = useState(true);
   const navigate = useNavigate();
 
   const actionButtons: ActionButton[] = [
     { icon: MoveUpRight, label: "Send", route: "#" },
     { icon: ArrowLeftRight, label: "Swap", route: "/swap" },
-    { icon: Zap, label: "Fund", route: "/dashboard/fund", isActive: true },
-    { icon: Landmark, label: "Sell", route: "/dashboard/sell" },
+    { icon: Zap, label: "Fund", route: "#", isActive: true },
+    { icon: Landmark, label: "Sell", route: "#" },
   ];
 
   const handleActionClick = (action: ActionButton) => {

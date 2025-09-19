@@ -5,7 +5,6 @@ import SearchCryptoModal from "@/components/ui/SearchModal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { nftCollections } from "@/constants/Dummy";
 import { useCoinStore } from "@/hooks/useCoinStore";
-// import type { CoinMarket } from "@/types/types";
 import { ChevronRight, TrendingDown, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
