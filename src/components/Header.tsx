@@ -90,9 +90,12 @@ const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
 
               <div className="lg:hidden">
                 {isOpen ? (
-                  <X className="h-8 w-8" onClick={toggleMenu} />
+                  <X className="h-8 w-8 text-slate-100" onClick={toggleMenu} />
                 ) : (
-                  <Menu className="h-8 w-8" onClick={toggleMenu} />
+                  <Menu
+                    className="h-8 w-8 text-slate-100"
+                    onClick={toggleMenu}
+                  />
                 )}
               </div>
             </div>

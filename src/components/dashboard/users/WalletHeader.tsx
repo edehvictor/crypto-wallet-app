@@ -23,7 +23,7 @@ import showToast from "@/utils/toast.utils";
 import { accounts, networks } from "@/constants/Dummy";
 import type { Account, Network } from "@/types/types";
 import AccountDetails from "./ActionsButton";
-import SearchCryptoModal from "../ui/SearchModal";
+import SearchCryptoModal from "../../ui/SearchModal";
 
 type WalletHeaderProps = {
   className?: string;

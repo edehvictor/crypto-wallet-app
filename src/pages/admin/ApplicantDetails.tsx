@@ -2,7 +2,7 @@ import { CheckCheck, Trash, User, Wallet } from "lucide-react";
 import { Clock, XCircle, CheckCircle } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import FinancialMetricCard from "@/components/dashboard/FInancialCard";
+import FinancialMetricCard from "@/components/dashboard/admin/FInancialCard";
 import { ProfileField, ProfileSection } from "./ProfileSection";
 
 const profileData = {

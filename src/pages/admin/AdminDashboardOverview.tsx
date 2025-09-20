@@ -1,6 +1,6 @@
 import { Wallet } from "lucide-react";
 
-import FinancialMetricCard from "@/components/dashboard/FInancialCard";
+import FinancialMetricCard from "@/components/dashboard/admin/FInancialCard";
 import ApplicationPieChart, {
   type ChartData,
 } from "@/components/dashboard/shared/ApplicationPieChart";
@@ -17,7 +17,7 @@ function AdminDashboardOverview() {
   return (
     <div className="max-w-7xl bg-[#181818] mx-auto p-6 pt-10">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-jakarta text-slate-100">
+        <h1 className="text-2xl font-bold font-jakarta text-slate-100">
           Welcome back, David
         </h1>
       </div>

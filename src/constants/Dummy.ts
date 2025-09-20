@@ -1,4 +1,4 @@
-import type { NFT } from "@/pages/WalletDashboard";
+import type { NFT } from "@/pages/user/WalletDashboard";
 import type { Account, CryptoToken, Network } from "@/types/types";
 export const navItems = [
   { name: "Features", href: "/#features" },

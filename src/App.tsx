@@ -4,17 +4,16 @@ import { Toaster } from "react-hot-toast";
 import Signup from "./pages/auth/Signup";
 import LoginForm from "./pages/auth/Login";
 import { requireAuth } from "./scripts/auth.loader";
-import DashboardLayout from "./components/dashboard/DashboardLayout";
-import VerifyEmail from "./pages/auth/VerifyEmail";
+import DashboardLayout from "./components/dashboard/users/DashboardLayout";
 import ForgotPassword from "./pages/auth/ForgotPassword";
-import CryptoAssets from "./pages/CrytoAssets";
-import CoinDetails from "./pages/CoinDetails";
-import Swap from "./pages/Swap";
-import ActionButtonLayout from "./components/dashboard/ActionButtonsLayout";
-import Settings from "./pages/Settings";
-import History from "./pages/History";
+import CryptoAssets from "./pages/user/CrytoAssets";
+import CoinDetails from "./pages/user/CoinDetails";
+import Swap from "./pages/user/Swap";
+import ActionButtonLayout from "./components/dashboard/users/ActionButtonsLayout";
+import Settings from "./pages/user/Settings";
+import History from "./pages/user/History";
 import ApplicantDetails from "./pages/admin/ApplicantDetails";
-import Earn from "./pages/Earn";
+import Earn from "./pages/user/Earn";
 import AdminDashboardLayout from "./pages/admin/AdminDashboardLayout";
 import AdminDashboardOverview from "./pages/admin/AdminDashboardOverview";
 import UserManagement from "./pages/admin/UserManagement";
@@ -24,26 +23,26 @@ const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
-    path: "/auth/signup",
+    path: "/",
+    children: [
+      {
+        path: "/auth/signup",
 
-    element: <Signup />,
+        element: <Signup />,
+      },
+      {
+        path: "/auth/login",
+
+        element: <LoginForm />,
+      },
+
+      {
+        path: "/auth/forgotpassword",
+
+        element: <ForgotPassword />,
+      },
+    ],
   },
-  {
-    path: "/auth/login",
-
-    element: <LoginForm />,
-  },
-  {
-    path: "/auth/verifyemail",
-
-    element: <VerifyEmail />,
-  },
-  {
-    path: "/auth/forgotpassword",
-
-    element: <ForgotPassword />,
-  },
-
   {
     path: "/dashboard",
     loader: requireAuth,
@@ -53,56 +52,32 @@ const router = createBrowserRouter([
         index: true,
         element: <CryptoAssets />,
       },
-
-      {
-        path: "swap",
-        element: <Swap />,
-      },
-    ],
-  },
-  {
-    path: "coin/:id",
-    element: <CoinDetails />,
-  },
-  {
-    path: "/setting",
-    element: <ActionButtonLayout />,
-    children: [
-      {
-        index: true,
-        element: <Settings />,
-      },
     ],
   },
 
   {
-    path: "/swap",
+    path: "/",
     element: <ActionButtonLayout />,
     children: [
       {
-        index: true,
-        element: <Swap />,
+        path: "/dashboard/coin/:id",
+        element: <CoinDetails />,
       },
-    ],
-  },
-  {
-    path: "/history",
-    element: <ActionButtonLayout />,
-    children: [
       {
-        index: true,
+        path: "/dashboard/earn",
+        element: <Earn />,
+      },
+      {
+        path: "/dashboard/history",
         element: <History />,
       },
-    ],
-  },
-
-  {
-    path: "/earn",
-    element: <ActionButtonLayout />,
-    children: [
       {
-        index: true,
-        element: <Earn />,
+        path: "/dashboard/swap",
+        element: <Swap />,
+      },
+      {
+        path: "/dashboard/settings",
+        element: <Settings />,
       },
     ],
   },

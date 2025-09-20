@@ -1,4 +1,3 @@
-// hooks/useCoinStore.ts
 import { create } from "zustand";
 import { fetchSelectedCoins } from "@/lib/coingecko";
 import type { CoinMarket } from "@/types/types";

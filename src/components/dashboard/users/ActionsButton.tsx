@@ -24,7 +24,7 @@ const ActionButton = () => {
 
   const actionButtons: ActionButton[] = [
     { icon: MoveUpRight, label: "Send", route: "#" },
-    { icon: ArrowLeftRight, label: "Swap", route: "/swap" },
+    { icon: ArrowLeftRight, label: "Swap", route: "/dashboard/swap" },
     { icon: Zap, label: "Fund", route: "#", isActive: true },
     { icon: Landmark, label: "Sell", route: "#" },
   ];

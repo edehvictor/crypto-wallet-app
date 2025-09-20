@@ -11,19 +11,19 @@ interface NavigationItem {
 
 const navigationData: NavigationItem[] = [
   { icon: Home, label: "Home", id: "dashboard", link: "/dashboard" },
-  { icon: Gift, label: "Earn", id: "earn", link: "/earn" },
-  { icon: ArrowLeftRight, label: "Swap", id: "swap", link: "/swap" },
+  { icon: Gift, label: "Earn", id: "earn", link: "/dashboard/earn" },
+  { icon: ArrowLeftRight, label: "Swap", id: "swap", link: "/dashboard/swap" },
   {
     icon: FileClock,
     label: "History",
     id: "history",
-    link: "/history",
+    link: "/dashboard/history",
   },
   {
     icon: Settings,
     label: "Setting",
     id: "setting",
-    link: "/setting",
+    link: "/dashboard/settings",
   },
 ];
 

@@ -1,7 +1,9 @@
+import { useState } from "react";
 import UserManagementTable from "@/components/dashboard/admin/UserManagementTable";
-import FinancialMetricCard from "@/components/dashboard/FInancialCard";
+import FinancialMetricCard from "@/components/dashboard/admin/FInancialCard";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Users, Wallet } from "lucide-react";
+import AddUserModal from "@/components/dashboard/admin/AddUserModal";
 
 const UserManagementTabTriggers = () => {
   return (
@@ -21,38 +23,34 @@ const UserManagementTabTriggers = () => {
 };
 
 function UserManagement() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="max-w-7xl bg-[#181818] mx-auto p-6 pt-10">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl text-slate-200 font-jakarta">All Users</h1>
+        <h1 className="text-2xl text-slate-100 font-bold font-jakarta">
+          All Users
+        </h1>
         <button
-          className={`
-        bg-[#70FF00] hover:bg-green-700 active:bg-green-800
-        disabled:bg-green-300 disabled:cursor-not-allowed
-        text-gray-900 font-medium
-        px-6 py-3 rounded-lg
-        transition-colors duration-200
-        focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
-      flex items-center gap-2 justify-center`}
+          onClick={() => setOpen(true)}
+          className="bg-[#70FF00] hover:bg-green-700 active:bg-green-800 text-gray-900 font-medium px-6 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center gap-2 justify-center"
         >
           <Plus />
           Add User
         </button>
       </div>
-      <div className="grid grid-cols-4   gap-6">
-        {/* Approved Credit Limit */}
 
+      <div className="grid grid-col-1 md:grid-cols-4 gap-6">
         <FinancialMetricCard
           value="238"
           title="Total Users"
           status="verified"
           iconColor="bg-green-100"
           hideInfo
-          className=" rounded-md"
+          className="rounded-md"
           icon={<Wallet className="size-5 text-gray-700" />}
         />
 
-        {/* Outstanding Loan Balance */}
         <FinancialMetricCard
           value="92"
           title="Active Users"
@@ -60,14 +58,18 @@ function UserManagement() {
           status="verified"
           iconColor="bg-green-100"
           hideInfo
-          className=" rounded-md"
+          className="rounded-md"
           icon={<Wallet className="size-5 text-gray-700" />}
         />
       </div>
+
       <Tabs defaultValue="users" className="w-full mt-8">
         <UserManagementTabTriggers />
         <UserManagementTable />
       </Tabs>
+
+      {/* Add User Modal */}
+      <AddUserModal open={open} setOpen={setOpen} />
     </div>
   );
 }

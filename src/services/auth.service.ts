@@ -70,12 +70,6 @@ class FirebaseAuthService {
       const user = userCred.user;
       if (!user) throw new Error("User not returned from signUp");
 
-      //  Send email verification
-      // await sendEmailVerification(user, {
-      //   url: `${window.location.origin}/auth/email-verified`,
-      //   handleCodeInApp: true,
-      // });
-
       await setDoc(doc(this.db, "profile", user.uid), {
         id: user.uid,
         email: values.email,
@@ -137,16 +131,6 @@ class FirebaseAuthService {
       return null;
     }
   }
-
-  // public async resendVerificationEmail() {
-  //   const user = await this.getSession();
-  //   if (user && !user.emailVerified) {
-  //     await sendEmailVerification(user);
-  //     showToast.message("Verification email resent successfully!");
-  //   } else {
-  //     showToast.error("User already verified or not logged in.");
-  //   }
-  // }
 
   private async emailExists(email: string) {
     const q = query(

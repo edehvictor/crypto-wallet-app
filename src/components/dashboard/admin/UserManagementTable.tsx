@@ -354,14 +354,14 @@ const UserManagementTable: React.FC = () => {
       {/* Filters */}
       <div className="p-4 border-b border-[#2c2c2c]">
         <div className="flex items-center justify-between">
-          <div className="flex flex-wrap gap-3 items-center">
-            <div className="relative w-[25rem]">
+          <div className="flex flex-col md:flex-row gap-3 items-start">
+            <div className="relative md:w-[25rem] w-full ">
               <div className="absolute inset-y-0 left-0 flex border-[#2c2c2c] items-center pl-3 pointer-events-none">
                 <Search className="w-4 h-4 text-gray-400" />
               </div>
               <input
                 type="text"
-                className="bg-[#1a1a1a] border border- text-gray-100 text-sm rounded-sm focus:ring-green-500 focus:border-[#2c2c2c] block w-full pl-10 p-2.5"
+                className="bg-[#1a1a1a]  border border- text-gray-100 text-sm rounded-sm focus:ring-green-500 focus:border-[#2c2c2c] block md:w-full pl-10 p-2.5"
                 placeholder="Search users by name, email, phone, or ID..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -370,13 +370,16 @@ const UserManagementTable: React.FC = () => {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="inline-flex bg-[#1a1a1a] items-center px-4 py-2.5 text-sm font-medium text-center text-gray-300 border-0 focus:outline-0 border-[#2c2c2c] rounded-sm .hover:bg-[#303030] focus:ring-1 focus:outline-none ">
+                <button className="inline-flex bg-[#212121]  items-center px-4 py-2.5 text-sm font-medium text-center text-gray-300 border-0 focus:outline-0 border-[#2c2c2c] rounded-sm hover:bg-[#303030] focus:ring-1 focus:outline-none ">
                   <ListFilter className="w-4 h-4 mr-2 -ml-1 text-gray-100" />
                   {getFilterDisplayText()}
                   <ChevronDown className="w-4 h-4 ml-2 text-gray-300" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48">
+              <DropdownMenuContent
+                align="start"
+                className="w-48 bg-[#1a1a1a] hover:bg-[#303030]"
+              >
                 <DropdownMenuLabel className="text-xs font-medium text-gray-200 uppercase">
                   Status
                 </DropdownMenuLabel>
@@ -384,9 +387,7 @@ const UserManagementTable: React.FC = () => {
                 <DropdownMenuItem
                   onClick={() => handleStatusFilterChange("all")}
                   className={`cursor-pointer ${
-                    statusFilter === "all"
-                      ? "bg-[#1a1a1a] text-gray-900"
-                      : "text-gray-700"
+                    statusFilter === "all" ? "text-gray-300" : "text-gray-300"
                   }`}
                 >
                   All
@@ -395,8 +396,8 @@ const UserManagementTable: React.FC = () => {
                   onClick={() => handleStatusFilterChange("active")}
                   className={`cursor-pointer ${
                     statusFilter === "active"
-                      ? "bg-gray-100 text-gray-900"
-                      : "text-gray-700"
+                      ? "bg-[#1a1a1a] text-gray-300"
+                      : "text-gray-300"
                   }`}
                 >
                   Active
@@ -405,8 +406,8 @@ const UserManagementTable: React.FC = () => {
                   onClick={() => handleStatusFilterChange("Blocked")}
                   className={`cursor-pointer ${
                     statusFilter === "Blocked"
-                      ? "bg-gray-100 text-gray-900"
-                      : "text-gray-700"
+                      ? "ext-gray-300"
+                      : "text-gray-300"
                   }`}
                 >
                   Blocked
@@ -415,8 +416,8 @@ const UserManagementTable: React.FC = () => {
                   onClick={() => handleStatusFilterChange("Suspended")}
                   className={`cursor-pointer ${
                     statusFilter === "Suspended"
-                      ? "bg-gray-100 text-gray-900"
-                      : "text-gray-700"
+                      ? "bg-[#1a1a1a] text-gray-300"
+                      : "text-gray-300"
                   }`}
                 >
                   Suspended

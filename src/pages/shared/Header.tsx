@@ -155,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({
                     className="w-80 bg-[#1a1a1a]/95 backdrop-blur-md shadow-xl ring-1 ring-black/5 border-0 rounded-xl p-2"
                   >
                     <div className="px-3 py-2 border-b border-[#2c2c2c]">
-                      <h3 className="font-semibold text-gray-900">
+                      <h3 className="font-semibold text-gray-200">
                         Notifications
                       </h3>
                     </div>
@@ -163,7 +163,7 @@ const Header: React.FC<HeaderProps> = ({
                       {notifications.map((notification) => (
                         <DropdownMenuItem
                           key={notification.id}
-                          className="flex items-start gap-3 px-3 py-3 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 rounded-lg transition-colors"
+                          className="flex items-start gap-3 px-3 py-3 cursor-pointer  focus:bg-[#303030] rounded-lg transition-colors"
                         >
                           <div
                             className={`w-2 h-2 rounded-full mt-2 ${
@@ -176,13 +176,13 @@ const Header: React.FC<HeaderProps> = ({
                             <p
                               className={`text-sm ${
                                 notification.unread
-                                  ? "font-semibold text-gray-900"
-                                  : "text-gray-700"
+                                  ? "font-semibold text-gray-300"
+                                  : "text-gray-200"
                               }`}
                             >
                               {notification.title}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-gray-200 mt-1">
                               {notification.time}
                             </p>
                           </div>
@@ -229,7 +229,7 @@ const Header: React.FC<HeaderProps> = ({
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-gray-300 mb-1">
+                    <p className="text-sm font-semibold text-gray-100 mb-1">
                       John Doe
                     </p>
                     <p className="text-xs text-gray-200">john.doe@gmial.com</p>

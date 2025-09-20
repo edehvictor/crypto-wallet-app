@@ -56,14 +56,14 @@ const CryptoAssets = () => {
             <div className="space-y-3 pb-32">
               <div className="mt-4 space-y-3 px-4 max-w-2xl mx-auto">
                 {coinData.length === 0 && (
-                  <p className="text-gray-400">No coin selected.</p>
+                  <p className="text-gray-200">No coin selected</p>
                 )}
               </div>
               {coinData.map((coin) => (
                 <Card
                   key={coin.id}
                   className="bg-gray-800 border-gray-700 cursor-pointer"
-                  onClick={() => navigate(`/coin/${coin.id}`)}
+                  onClick={() => navigate(`/dashboard/coin/${coin.id}`)}
                 >
                   <CardContent className="flex items-center justify-between p-4">
                     <div className="flex items-center space-x-3">
@@ -147,7 +147,7 @@ const CryptoAssets = () => {
                   <Card
                     key={nft.id}
                     className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors cursor-pointer"
-                    onClick={() => navigate(`/dashboard/nft/${nft.id}`)}
+                    onClick={() => navigate(`/#}`)}
                   >
                     <CardContent className="flex items-center justify-between p-4">
                       <div className="flex items-center space-x-3">
@@ -159,11 +159,6 @@ const CryptoAssets = () => {
                             <span className="font-semibold text-white">
                               {nft.name}
                             </span>
-                            {/* {nft.rarity && (
-                              <Badge className={getRarityColor(nft.rarity)}>
-                                {nft.rarity}
-                              </Badge>
-                            )} */}
                           </div>
                           <p className="text-sm text-gray-400 mt-1">
                             {nft.collection}
@@ -203,7 +198,7 @@ const CryptoAssets = () => {
                 <Button
                   variant="outline"
                   className="bg-transparent border-gray-600 text-gray-400 hover:bg-gray-800 hover:text-white"
-                  onClick={() => navigate("/dashboard/nft/browse")}
+                  onClick={() => navigate("/#")}
                 >
                   Browse NFTs
                 </Button>
